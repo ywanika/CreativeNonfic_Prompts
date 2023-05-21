@@ -1,0 +1,19 @@
+.nav-link,
+.nav__link {
+    color:#666666;
+}
+
+.nav__link--active,
+.nav__link:hover {
+    color:white;
+    background-color: #FB9797;
+}
+
+.link {
+    text-decoration-line: underline;
+    color: #FB9797;
+}
+
+.footer{
+    background-color: lightgray;
+}

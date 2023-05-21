@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="container text-center">
+    <form method="POST">
+        <div class="row">
+            <div class="col-6">
+                <h3> Write a
+                    <input type="text" name="essayPrompt" value="{{essayPrompt}}">
+                    with the prompt:
+                    <input type="text" name="subjectPrompt" value="{{subjectPrompt}}">
+                </h3>
+            </div>
+            <div class="col-6">
+                <input type="submit" value="New Prompt" class="btn" style="color: white; background-color: #fb9797" name="button">
+                <input type="submit" value="Select" class="btn" style= "color: white; background-color: green"  name="button">
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

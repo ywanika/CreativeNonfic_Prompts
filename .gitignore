@@ -1,0 +1,4 @@
+connection_string.txt
+promptsList
+.DS_Store
+mongoPromptGenerator.py

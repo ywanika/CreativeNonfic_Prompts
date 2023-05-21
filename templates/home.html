@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col-6 mt-4">
+            <h2 style ="text-decoration: underline; text-decoration-color: #fb9797; text-decoration-thickness: 4px;">
+                {{currentPrompt}} 
+            </h2>
+        </div>
+
+        <div class="col-6">
+            <form class="mx-4" method="POST">
+                <div class= "row">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" required>
+                </div>
+                <div class= "row">
+                    <label class="form-label">Submission</label>
+                    <textarea type="text" class="form-control" name="piece" placeholder="Paste your piece here" rows="4" required></textarea>
+                    <small>Piece does not need to match prompt, prompt is for inspiration 
+                        <br>If your piece includes tables/images/etc.... sorrryyyyy :(
+                        <br>Working on embedding Google Docs</small>
+                </div>
+                <div class= "row">
+                    <button type="submit" class="btn" style= "color: white; background-color: #fb9797">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class = "row mx-4 d-flex justify-content-center">
+    {% for name, text in currentSubmissions.items() %} <!--currentSubmissions is a dictionary {name:text, name:text}-->
+    <div class="card col-5 m-2">
+        <div class="card-body">
+            <h5 class="card-header">{{name}}</h5>
+            <p class="card-text" sytle="font-family: 'Times New Roman', Times, serif;">{{text}}</p>
+        </div>
+    </div>
+    {%  endfor %}
+</div>
+
+{% endblock %}
