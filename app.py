@@ -4,7 +4,6 @@ from flask_pymongo import PyMongo
 
 app = Flask(__name__) #__name__  is set by python
 app.debug = True
-app.config["SECRET_KEY"] = "gguu" # for session
 
 #gets connectection string for Mongo DB
 if os.environ.get("MONGO_URI") == None :
@@ -13,6 +12,12 @@ if os.environ.get("MONGO_URI") == None :
     app.config['MONGO_URI']=connection_string
 else:
     app.config['MONGO_URI']= os.environ.get("MONGO_URI")
+
+#gets secret key for session
+if os.environ.get("SECRET_KEY") == None :
+    app.config["SECRET_KEY"] = "gguu"
+else:
+    app.config["SECRET_KEY"]= os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
@@ -92,8 +97,8 @@ def choosePrompt():
         elif button == "Select":
             essay = request.form["essayPrompt"]
             subject = request.form["subjectPrompt"]
-            #mongo.db.EssayPrompts.find_one_and_update({"prompt":essay}, {"$inc":{"usageCount":1}})
-            #mongo.db.SubjectPrompts.find_one_and_update({"prompt":subject}, {"$inc":{"usageCount":1}})
+            mongo.db.EssayPrompts.find_one_and_update({"prompt":essay}, {"$inc":{"usageCount":1}})
+            mongo.db.SubjectPrompts.find_one_and_update({"prompt":subject}, {"$inc":{"usageCount":1}})
             fullPrompt = f"Write a {essay} with the prompt: {subject}"
             mongo.db.finalPrompts.insert_one({"prompt":fullPrompt})
             return redirect("/")
