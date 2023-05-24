@@ -6,18 +6,18 @@ app = Flask(__name__) #__name__  is set by python
 app.debug = True
 
 #gets connectection string for Mongo DB
-if os.environ.get("MONGO_URI") == None :
+if os.getenv("MONGO_URI") == None :
     file = open("connection_string.txt","r")
     connection_string = file.read().strip()
     app.config['MONGO_URI']=connection_string
 else:
-    app.config['MONGO_URI']= os.environ.get("MONGO_URI")
+    app.config['MONGO_URI']= os.getenv("MONGO_URI")
 
 #gets secret key for session
-if os.environ.get("SECRET_KEY") == None :
+if os.getenv("SECRET_KEY") == None :
     app.config["SECRET_KEY"] = "gguu"
 else:
-    app.config["SECRET_KEY"]= os.environ.get("SECRET_KEY")
+    app.config["SECRET_KEY"]= os.getenv("SECRET_KEY")
 
 mongo = PyMongo(app)
 
