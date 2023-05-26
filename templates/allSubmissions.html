@@ -3,19 +3,21 @@
 {% block main %}
 
 <div class = "mx-4">
-    {% for prompt, submissions in allSubmissions.items() %} <!--allSubmissions is a dictionary of dictionaries { prompt:{name:text, name:text}}-->
-    <h4 style ="text-decoration: underline; text-decoration-color: #fb9797; text-decoration-thickness: 4px;">
-        Prompt: {{prompt}} 
-    </h4>
+    {% if allSubmissions %}
+        {% for prompt, submissions in allSubmissions.items() %} <!--allSubmissions is a dictionary of dictionaries { prompt:{name:text, name:text}}-->
+            <h4 style ="text-decoration: underline; text-decoration-color: #fb9797; text-decoration-thickness: 4px;">
+                Prompt: {{prompt}} 
+            </h4>
 
-    {% for name, text in submissions.items() %}
-    <div class="card m-2">
-        <div class="card-body">
-            <h5 class="card-header">{{name}}</h5>
-            <p class="card-text" sytle="font-family: 'Times New Roman', Times, serif;">{{text}}</p>
-        </div>
-    </div>
-    {%  endfor %}
-    {%  endfor %}
+            {% for name, text in submissions.items() %}
+                <div class="card m-2">
+                    <div class="card-body">
+                        <h5 class="card-header">{{name}}</h5>
+                        <p class="card-text" sytle="font-family: 'Times New Roman', Times, serif;">{{text}}</p>
+                    </div>
+                </div>
+            {%  endfor %}
+        {%  endfor %}
+    {% endif %}
 </div>
 {% endblock %}

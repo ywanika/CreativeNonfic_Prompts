@@ -32,14 +32,16 @@
 </div>
 
 <div class = "row mx-4 d-flex justify-content-center">
-    {% for name, text in currentSubmissions.items() %} <!--currentSubmissions is a dictionary {name:text, name:text}-->
-    <div class="card col-5 m-2">
-        <div class="card-body">
-            <h5 class="card-header">{{name}}</h5>
-            <p class="card-text" sytle="font-family: 'Times New Roman', Times, serif;">{{text}}</p>
-        </div>
-    </div>
-    {%  endfor %}
+    {% if currentSubmissions != []%}
+        {% for name, text in currentSubmissions.items() %} <!--currentSubmissions is a dictionary {name:text, name:text}-->
+            <div class="card col-5 m-2">
+                <div class="card-body">
+                    <h5 class="card-header">{{name}}</h5>
+                    <p class="card-text" sytle="font-family: 'Times New Roman', Times, serif;">{{text}}</p>
+                </div>
+            </div>
+        {%  endfor %}
+    {% endif %}
 </div>
 
 {% endblock %}
