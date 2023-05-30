@@ -36,8 +36,9 @@
         {% for name, text in currentSubmissions.items() %} <!--currentSubmissions is a dictionary {name:text, name:text}-->
             <div class="card col-5 m-2">
                 <div class="card-body">
-                    <h5 class="card-header">{{name}}</h5>
-                    <p class="card-text" sytle="font-family: 'Times New Roman', Times, serif;">{{text}}</p>
+                    <h5 class="card-header" style="font-family: 'Times New Roman', Times, serif;">{{name}}</h5>
+                    <p class="card-text" style="font-family: 'Times New Roman', Times, serif; 
+                    white-space: pre-wrap; font-size: 16px;">{{text}}</p>
                 </div>
             </div>
         {%  endfor %}
